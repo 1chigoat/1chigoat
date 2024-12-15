@@ -1,0 +1,764 @@
+:root {
+    --button-gap: 20px; /* Default gap between buttons */
+}
+
+body {
+    display: flex;               /* Use flexbox for layout */
+    justify-content: center;     /* Center horizontally */
+    align-items: center;         /* Center vertically */
+    min-height: 100vh;           /* Full viewport height */
+    font-family: 'Rajdhani', sans-serif;
+    background-image: url('https://w0.peakpx.com/wallpaper/317/919/HD-wallpaper-abstract-black-purple.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: #fff;
+    margin: 0;                   /* Remove default margin */
+    padding: 20px;               /* Optional padding */
+    box-sizing: border-box;      /* Include padding/border in element's total width/height */
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: -1;
+}
+
+/* Hide Elements Initially */
+.hidden {
+    display: none; /* Hides elements until shown dynamically */
+}
+
+/* License Key Validation Section */
+#license-container {
+    width: 100%;
+    margin-top:100x;
+    width: 330px; /* Consistent width with other sections */
+    margin: 200px auto; /* Center align horizontally */
+    padding: 20px; /* Add padding */
+    text-align: center; /* Align content to center */
+    background-color: rgba(26, 26, 26, 0.7); /* Dark semi-transparent background */
+    border-radius: 10px; /* Rounded corners */
+    border: 1px solid #444; /* Subtle border for definition */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8); /* Enhance shadow for depth */
+}
+
+/* License Key Validation Header */
+/* License Key Validation Header */
+#license-container h2 {
+    font-family: 'Quintessential', cursive; /* Set font to Quintessential */
+    font-size: 2.0em;      
+    margin-bottom: 0px;/* Adjust spacing below */
+    background: linear-gradient(to right, #8a2be2, #ffffff); /* Purple to white gradient */
+    -webkit-background-clip: text; /* Clip the background to the text */
+    -webkit-text-fill-color: transparent; /* Make text fill transparent to show gradient */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); /* Shadow for better contrast */
+    letter-spacing: 1px; /* Adjust letter spacing */
+}
+
+/* Input and Button Styles */
+#license-container input#license-key {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 2px solid #8a2be2;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    margin-bottom: 10px;
+    font-family: 'Aldrich', sans-serif;
+}
+
+#license-container button#validate-btn {
+    background-color: #8a2be2; /* Purple button background */
+    color: #ffffff; /* White text */
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: 'Aldrich', sans-serif; /* Consistent font */
+    transition: background-color 0.3s ease;
+}
+
+#license-container button#validate-btn:hover {
+    background-color: #6f1d99; /* Darker purple on hover */
+}
+
+#license-validation-result {
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    transition: color 0.3s ease; /* Smooth color transitions */
+}
+/* Container with more transparent background to let the image show through */
+.container {
+    position: relative;
+    width: calc(100% - 40px); /* Adjust width for better alignment */
+    max-width: 400px; /* Maintain a reasonable maximum width */
+    margin: 40px auto; /* Center the container with margin */
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(26, 26, 26, 0.05); /* Set to 5% opacity */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8); /* Add box shadow for depth */
+}
+
+/* Heading Styles */
+h1 {
+    font-family: 'Fondamento', cursive; /* Set the font to Quintessential */
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    background: linear-gradient(to right, #8a2be2, #ffffff); /* Purple to white gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Use transparent text fill to show gradient */
+    position: relative;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); /* Shadow for better contrast */
+}
+
+/* Tab Navigation Styles */
+.tab-navigation {
+    display: flex;
+    justify-content: space-between; /* Space buttons evenly */
+    margin-bottom: 20px; /* Add spacing below the tab navigation */
+    background-color: rgba(26, 26, 26, 0.5); /* Semi-transparent dark background */
+    padding: 10px 5px; /* Add padding inside the navigation */
+    border-radius: 12px; /* Rounded corners for the tab container */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
+}
+
+/* Individual Tab Buttons */
+.tab-button {
+    flex: 1; /* Each button takes up equal space */
+    padding: 10px;
+    font-family: 'Aldrich', sans-serif; /* Maintain the font style */
+    color: #ffffff; /* White text for visibility */
+    background-color: rgba(51, 51, 51, 0.1); /* Slightly transparent background */
+    border: none; /* Remove border */
+    border-radius: 8px; /* Add rounded corners */
+    cursor: pointer; /* Pointer cursor on click */
+    margin: 0 5px; /* Add spacing between buttons */
+    text-transform: uppercase; /* Make text uppercase */
+    letter-spacing: 1px; /* Slight letter spacing for readability */
+    font-size: 1em; /* Maintain font size */
+}
+
+/* Active Tab Button */
+.tab-button.active {
+    background-color: #8a2be2; /* Purple background for the active tab */
+    color: #ffffff; /* White text for active button */
+    transform: scale(1.05); /* Slightly enlarge active tab button */
+    box-shadow: 0 3px 6px rgba(138, 43, 226, 0.6); /* Add a subtle glow to the active tab */
+}
+
+/* Combined Slider for Tab Content */
+.tab-slider {
+    position: relative;
+    overflow: hidden; /* Hide overflow for sliding effect */
+}
+
+.tab-content {
+    display: none;
+    transition: transform 0.3s ease; /* Sliding transition effect */
+    margin-top: 20px; /* Increase gap above each tab content */
+    padding: 15px; /* Add padding for better spacing */
+    border-radius: 5px; /* Optional: add rounded corners */
+    background-color: rgba(26, 26, 26, 0.05); /* Set to 5% opacity */
+}
+
+.tab-content.active {
+    display: block; /* Make the active tab content visible */
+}
+
+/* Popup Styles */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #8a22be; /* Dark background for better contrast */
+    color: #fff; /* Ensures text is white */
+    padding: 14px 15px; /* Increase padding for a larger area */
+    border-radius: 10px; /* Rounded corners */
+    display: none;
+    font-size: 1.0em; /* Increase font size for better readability */
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+}
+
+/* Remaining styles for other sections remain unchanged... */
+
+/* Profile Section Styles */
+.profile-container {
+    width: 100%;
+    max-width: 330px;
+    margin: 20px auto; /* Add spacing around profile section */
+    padding: 15px;
+    text-align: left; /* Align all profile info to the left */
+    color: #fff;
+    background-color: rgba(26, 26, 26, 0.6); /* Slightly darker background for better readability */
+    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #444; /* Subtle border for definition */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8); /* Enhance shadow for depth */
+    font-family: 'Aldrich', sans-serif; /* Ensure Aldrich font is applied consistently */
+    font-size: 1.2em;
+}
+
+/* Profile Header */
+.profile-container h2 {
+    font-family: 'Bruno Ace SC', sans-serif; /* Apply the Bruno Ace SC font */
+    font-size: 1.7em; /* Adjust font size */
+    margin-bottom: 15px; /* Spacing below the heading */
+    color: #8a2be2; /* Purple color for the heading */
+    text-transform: none; /* Ensure text is displayed as is, without transformation */
+}
+
+/* Profile Info Section */
+.profile-info {
+    margin-bottom: 15px; /* Add spacing below the profile section */
+}
+
+/* Individual Profile Info Item */
+.profile-info-item {
+    font-family: 'Aldrich', sans-serif; /* Consistent font */
+    font-size: 1.1em; /* Slightly larger font size */
+    margin: 10px 0; /* Spacing between each profile item */
+    color: #fff; /* White color for text */
+    display: flex; /* Flex layout for label and value */
+    align-items: center; /* Align label and text vertically */
+}
+
+/* Labels for Profile Info */
+.profile-info-item label {
+    font-weight: bold; /* Bold text for labels */
+    margin-right: 10px; /* Space between label and value */
+    color: #8a2be2; /* Purple color for labels */
+}
+
+/* Profile Info Values */
+.profile-info-item span {
+    color: #ffffff; /* White color for values */
+}
+
+/* Person Icon Styles */
+i.fa-user-circle {
+    font-size: 24px; /* Adjust icon size */
+    margin-right: 10px; /* Add spacing to the right of the icon */
+    color: #8a2be2; /* Purple icon color */
+}
+
+/* Add any other relevant styles here... */
+.container {
+    position: relative;
+    width: calc(100% - 40px); /* Adjust width for better alignment */
+    max-width: 400px; /* Maintain a reasonable maximum width */
+    margin: 40px auto; /* Center the container with margin */
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(26, 26, 26, 0.05); /* Set to 5% opacity */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8); /* Add box shadow for depth */
+}
+
+/* Heading Styles */
+h1 {
+    font-family: 'Fondamento', cursive; /* Set the font to Quintessential */
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    background: linear-gradient(to right, #8a2be2, #ffffff); /* Purple to white gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Use transparent text fill to show gradient */
+    position: relative;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); /* Shadow for better contrast */
+}
+
+/* Tab Navigation Styles */
+.tab-navigation {
+    display: flex;
+    justify-content: space-between; /* Space buttons evenly */
+    margin-bottom: 20px; /* Add spacing below the tab navigation */
+    background-color: rgba(26, 26, 26, 0.5); /* Semi-transparent dark background */
+    padding: 10px 5px; /* Add padding inside the navigation */
+    border-radius: 12px; /* Rounded corners for the tab container */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
+}
+
+/* Individual Tab Buttons */
+.tab-button {
+    flex: 1; /* Each button takes up equal space */
+    padding: 10px;
+    font-family: 'Aldrich', sans-serif; /* Maintain the font style */
+    color: #ffffff; /* White text for visibility */
+    background-color: rgba(51, 51, 51, 0.1); /* Slightly transparent background */
+    border: none; /* Remove border */
+    border-radius: 8px; /* Add rounded corners */
+    cursor: pointer; /* Pointer cursor on click */
+    margin: 0 5px; /* Add spacing between buttons */
+    text-transform: uppercase; /* Make text uppercase */
+    letter-spacing: 1px; /* Slight letter spacing for readability */
+    font-size: 1em; /* Maintain font size */
+}
+
+/* Active Tab Button */
+.tab-button.active {
+    background-color: #8a2be2; /* Purple background for the active tab */
+    color: #ffffff; /* White text for active button */
+    transform: scale(1.05); /* Slightly enlarge active tab button */
+    box-shadow: 0 3px 6px rgba(138, 43, 226, 0.6); /* Add a subtle glow to the active tab */
+}
+
+/* Combined Slider for Tab Content */
+.tab-slider {
+    position: relative;
+    overflow: hidden; /* Hide overflow for sliding effect */
+}
+
+.tab-content {
+    display: none;
+    transition: transform 0.3s ease; /* Sliding transition effect */
+    margin-top: 20px; /* Increase gap above each tab content */
+    padding: 15px; /* Add padding for better spacing */
+    border-radius: 5px; /* Optional: add rounded corners */
+    background-color: rgba(26, 26, 26, 0.05); /* Set to 5% opacity */
+}
+
+.tab-content.active {
+    display: block; /* Make the active tab content visible */
+}
+
+/* Updated only for "Found Assets" Heading */
+#tab-content-dashboard h2 {
+    font-family: 'Aldrich', sans-serif; /* Keep the font Aldrich */
+    font-size: 2.5em; /* Retain the font size */
+    color: #fff; /* Maintain white color */
+    text-transform: uppercase; /* Optional: Keep text uppercase */
+    letter-spacing: 1px; /* Maintain slight letter spacing */
+    margin-bottom: 10px; /* Reduce the gap below the heading */
+    margin-top: 0; /* Move the heading slightly up */
+}
+
+/* Dashboard Grid Styles */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Keep 2 columns */
+    gap: 10px; /* Reduce the gap between the grid items */
+    padding: 10px 0; /* Adjust padding to reduce spacing around the grid */
+    width: 100%;
+    margin: 0 auto;
+    max-width: px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7); /* Enhanced shadow for a modern look */
+}
+
+.dashboard-box {
+    background-color: transparent; /* Set background color to transparent */
+    border: 1px solid #333; /* Keep the border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 19px; /* Maintain padding */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    min-height: 160px; /* Set height for the boxes */
+    width: 250px; /* Default max-width for the boxes */
+}
+
+.dashboard-box img {
+    width: 60px; /* Adjust the width for smaller logos */
+    height: 60px; /* Maintain aspect ratio with height */
+    margin-bottom: 10px;
+}
+
+.dashboard-box .crypto-name {
+    font-family: 'Aldrich', sans-serif;
+    font-size: 1.5em; /* Adjusted font size */
+    margin: 1px 0;
+    color: #fff;
+}
+
+.dashboard-box .crypto-value {
+    display: none; /* Completely hide this element */
+}
+
+.dashboard-box .usd-balance {
+    font-family: 'Aldrich', sans-serif;
+    font-size: 1.2em; /* Keep the USD balance visible */
+    color: #8a2be2; /* White color */
+    font-weight: bold;
+    margin: 4px 0;
+    text-align: center;
+}
+
+/* New Total Earnings Section */
+.dashboard-total-earnings {
+    background-color: rgba(26, 26, 26, 0.05); /* Set to 5% opacity */
+    border: 1px solid #333;
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px; /* Increased spacing below the earnings box */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8); /* Add subtle shadow for depth */
+    color: #fff; /* White text for readability */
+    width: 100%; /* Ensure it spans the same width as other content */
+    max-width: 320px; /* Consistent max-width with other elements */
+    margin-left: auto; /* Center align horizontally */
+    margin-right: auto; /* Center align horizontally */
+}
+
+.dashboard-total-earnings h3 {
+    font-family: 'Aldrich', sans-serif;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #8a2be2; /* Purple for the heading */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.dashboard-total-earnings p {
+    font-family: 'Aldrich', sans-serif;
+    font-size: 1.6em;
+    margin: 0;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* Responsive Adjustments for Mobile View */
+@media screen and (max-width: 600px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr; /* Single column on small screens */
+        padding: 10px;
+    }
+
+    .dashboard-box {
+        min-height: 180px;
+    }
+}
+
+/* Start Button */
+#startButton {
+    background-color: #007bff; /* Blue color */
+    color: #ffffff; /* White text */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Aldrich', sans-serif;
+    font-size: 1em;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+#startButton:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Stop Button */
+#stopButton {
+    background-color: #dc3545; /* Red color */
+    color: #ffffff; /* White text */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Aldrich', sans-serif;
+    font-size: 1em;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+#stopButton:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+
+/* Clear Button */
+#clearButton {
+    background-color: #8a2be2; /* Purple color */
+    color: #ffffff; /* White text */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Aldrich', sans-serif;
+    font-size: 1em;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+#clearButton:hover {
+    background-color: #6f1d99; /* Darker purple on hover */
+}
+
+/* Withdraw button below the 4 logos */
+#dashboardWithdrawButton {
+    background-color: #8a2be2; /* Purple color */
+    color: #ffffff; /* White text */
+    font-family: 'Aldrich', sans-serif;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 1em;
+    margin-top: 20px; /* Add spacing between the withdraw button and the grid */
+    width: 100%; /* Make the button span the entire width */
+}
+
+#dashboardWithdrawButton:hover {
+    background-color: #6f1d99; /* Darker purple on hover */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 600px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr; /* Single column on small screens */
+        padding: 10px;
+    }
+
+    .dashboard-box {
+        max-width: 400px; /* Increase the width for mobile view */
+        margin: 0 auto; /* Center align boxes horizontally */
+    }
+}
+
+/* Logo Block Styles */
+/* Crypto Logos in Search Section */
+.crypto-logos {
+    display: flex;
+    justify-content: space-around; /* Space logos evenly */
+    margin-bottom: 20px; /* Add spacing below logos */
+    position: relative; /* Ensure correct positioning */
+    padding: 10px 0; /* Padding for consistent spacing */
+    background: rgba(26, 26, 26, 0.5); /* Blend logos into darker background */
+    border-radius: 8px; /* Rounded background edges for logos */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8); /* Subtle shadow around the logo container */
+}
+
+.logo-block {
+    cursor: pointer;
+    opacity: 1; /* Set full opacity */
+    transition: all 0.3s ease;
+    flex: 1;
+    margin: 0 5px; /* Adjust margin for better spacing */
+    padding: 12px; /* Adequate spacing inside logo blocks */
+    border-radius: 10px; /* Smooth corners */
+    background: rgba(26, 26, 26, 0.8); /* Semi-transparent dark background */
+    border: 2px solid transparent; /* Default border is transparent */
+    text-align: center;
+    height: 75px; /* Consistent height for all logos */
+    width: 75px; /* Consistent width for all logos */
+    display: flex; /* Flex for vertical alignment */
+    flex-direction: column;
+    justify-content: center; /* Center-align content */
+    align-items: center;
+}
+
+.logo-block img {
+    width: 50px; /* Adjust logo size for better fit */
+    height: 50px; /* Maintain aspect ratio */
+    margin-bottom: 5px; /* Space between image and text */
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.6)); /* Add a shadow effect to logos */
+}
+
+.logo-block p {
+    font-size: 0.9em; /* Maintain readability */
+    margin: 0; /* Remove excess margin */
+    color: #fff; /* White text for visibility */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Text shadow for better contrast */
+}
+
+/* Remove Logo Block Hover Effect */
+.logo-block:hover {
+    opacity: 0.9; /* Slightly reduce opacity on hover */
+    background: rgba(26, 26, 26, 0.85); /* Maintain a subtle hover effect */
+}
+
+/* Selected Logo Effect */
+.logo-block.selected {
+    background: rgba(138, 43, 226, 0.5); /* Purple background with lower opacity */
+    border: none; /* Remove border */
+}
+
+/* Responsive Adjustments for Logos */
+@media screen and (max-width: 600px) {
+    .crypto-logos {
+        flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    }
+
+    .logo-block {
+        margin: 5px; /* Adjust margin for tighter layouts */
+        padding: 8px; /* Reduce padding */
+        height: 65px; /* Smaller height */
+        width: 65px; /* Smaller width */
+    }
+
+    .logo-block img {
+        width: 40px; /* Adjust logo size for smaller screens */
+        height: 40px;
+    }
+
+    .logo-block p {
+        font-size: 0.8em; /* Smaller text size */
+    }
+}
+
+/* Result and Seeds Sections */
+.seeds-generated {
+    background-color: rgba(26, 26, 26, 0.05); /* Set to 5% opacity */
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 1.2em; /* Increased font size for better visibility */
+    width: 80%; /* Decrease width to 80% or any desired percentage */
+    max-width: 350px; /* Set a maximum width */
+    text-align: center; /* Center text */
+    margin: 0 auto; /* Center the box horizontally */
+}
+
+.result {
+    background-color: rgba(26, 26, 26, 0.05); /* Set to 5% opacity */
+    color: plum;
+    height: 190px; /* Result area height */
+    overflow-y: auto;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #333;
+    font-size: 0.9em;
+    word-break: break-all;
+    width: 80%; /* Decrease width to 80% or any desired percentage */
+    max-width: 350px; /* Set a maximum width */
+    text-align: center; /* Center text */
+    margin: 0 auto; /* Center the box horizontally */
+}
+
+.valid-seeds {
+    background-color: rgba(26, 26, 26, 0.05); /* Semi-transparent black background */
+    color: #fff; /* White text for readability */
+    height: 150px; /* Fixed height to maintain layout consistency */
+    padding: 10px; /* Padding around the content */
+    margin-bottom: 10px; /* Space below the container */
+    border-radius: 5px; /* Rounded corners for a softer look */
+    border: 1px solid #333; /* Subtle border for better container definition */
+    font-size: 0.9em; /* Slightly smaller text for compact display */
+    word-break: break-word; /* Ensure long words do not overflow */
+    width: 80%; /* Responsive width relative to the parent container */
+    max-width: 400px; /* Maximum width to prevent overly wide boxes */
+    text-align: left; /* Align text to the left for standard reading */
+    margin: 0 auto; /* Center the box horizontally within its container */
+    overflow-y: auto; /* Enable vertical scrolling for overflow content */
+    overflow-x: hidden; /* Hide horizontal scrollbar to maintain clean lines */
+}
+
+.found-seed {
+    display: flex; /* Flex layout for logo and text alignment */
+    align-items: center; /* Vertically align logo and text */
+    margin-bottom: 10px; /* Add spacing between entries */
+}
+
+.found-seed img.crypto-logo {
+    width: 2em; /* Match the font size of the text */
+    height: 2em; /* Maintain a square aspect ratio */
+    margin-right: 10px; /* Add space between the logo and text */
+    border-radius: 50%; /* Optional: make logos circular */
+    object-fit: contain; /* Ensure the logo fits within the bounds */
+}
+
+/* Button Styles */
+button {
+    font-family: 'Aldrich', sans-serif; /* Apply Aldrich font */
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Popup Styles */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #8a22be; /* Dark background for better contrast */
+    color: #fff; /* Ensures text is white */
+    padding: 14px 15px; /* Increase padding for a larger area */
+    border-radius: 10px; /* Rounded corners */
+    display: none;
+    font-size: 1.0em; /* Increase font size for better readability */
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+}
+
+/* Profile Section Styles */
+.profile-container {
+    width: 100%;
+    max-width: 330px;
+    margin: 20px auto; /* Add spacing around profile section */
+    padding: 15px;
+    text-align: left; /* Align all profile info to the left */
+    color: #fff;
+    background-color: rgba(26, 26, 26, 0.6); /* Slightly darker background for better readability */
+    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #444; /* Subtle border for definition */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8); /* Enhance shadow for depth */
+    font-family: 'Aldrich', sans-serif; /* Ensure Aldrich font is applied consistently */
+    font-size: 1.2em;
+}
+
+/* Profile Header */
+.profile-container h2 {
+    font-family: 'Bruno Ace SC', sans-serif; /* Apply the Bruno Ace SC font */
+    font-size: 1.7em; /* Adjust font size */
+    margin-bottom: 15px; /* Spacing below the heading */
+    color: #8a2be2; /* Purple color for the heading */
+    text-transform: none; /* Ensure text is displayed as is, without transformation */
+}
+
+/* Profile Info Section */
+.profile-info {
+    margin-bottom: 15px; /* Add spacing below the profile section */
+}
+
+/* Individual Profile Info Item */
+.profile-info-item {
+    font-family: 'Aldrich', sans-serif; /* Consistent font */
+    font-size: 1.1em; /* Slightly larger font size */
+    margin: 10px 0; /* Spacing between each profile item */
+    color: #fff; /* White color for text */
+    display: flex; /* Flex layout for label and value */
+    align-items: center; /* Align label and text vertically */
+}
+
+/* Labels for Profile Info */
+.profile-info-item label {
+    font-weight: bold; /* Bold text for labels */
+    margin-right: 10px; /* Space between label and value */
+    color: #8a2be2; /* Purple color for labels */
+}
+
+/* Profile Info Values */
+.profile-info-item span {
+    color: #ffffff; /* White color for values */
+}
+
+/* Person Icon Styles */
+i.fa-user-circle {
+    font-size: 24px; /* Adjust icon size */
+    margin-right: 10px; /* Add spacing to the right of the icon */
+    color: #8a2be2; /* Purple icon color */
+}

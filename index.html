@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nova X is a tool for generating and checking crypto wallets using various crypto options.">
+    <meta name="keywords" content="Nova X, crypto wallet, bitcoin, ethereum, solana, bnb, generate wallets, crypto seeds">
+    <title>Nova X - Mobile Optimized</title>
+
+    <!-- Load Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quintessential&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC&family=Rajdhani:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fondamento&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet"> <!-- Load Bruno Ace SC -->
+</head>
+<body>
+    <!-- License Activation Section (Centered) -->
+    <div id="license-container-wrapper">
+        <div id="license-container">
+            <h2>Activate License</h2>
+            <input type="text" id="license-key" placeholder="Enter your license key">
+            <button id="validate-btn">Activate</button>
+            <p id="license-validation-result">N/A</p>
+        </div>
+    </div>
+
+    <!-- Main App Content (Hidden Initially) -->
+    <div id="app-content" class="hidden">
+        <div class="container">
+            <header>
+                <h1>Nova X</h1>
+            </header>
+        <!-- Tab Navigation -->
+        <nav class="tab-navigation">
+            <button id="tab-search" class="tab-button active">Search</button>
+            <button id="tab-dashboard" class="tab-button">Dashboard</button>
+            <button id="tab-profile" class="tab-button">Profile</button>
+        </nav>
+
+        <!-- Tab Content -->
+        <section class="tab-slider">
+            <!-- Search Tab Content -->
+            <div id="tab-content-search" class="tab-content active">
+                <!-- Crypto Logos Section -->
+                <div class="crypto-logos">
+                    <div class="logo-block" data-crypto="bitcoin">
+                        <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin Logo">
+                        <p>Bitcoin</p>
+                    </div>
+                    <div class="logo-block" data-crypto="solana">
+                        <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana Logo">
+                        <p>Solana</p>
+                    </div>
+                    <div class="logo-block" data-crypto="ethereum">
+                        <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="Ethereum Logo">
+                        <p>Ethereum</p>
+                    </div>
+                    <div class="logo-block" data-crypto="bnb">
+                        <img src="https://cryptologos.cc/logos/bnb-bnb-logo.png" alt="BNB Logo">
+                        <p>BNB</p>
+                    </div>
+                </div>
+
+                <!-- Wallet Checking Section -->
+                <div id="seedsGenerated" class="seeds-generated">Wallets Checked: 0</div>
+                <div id="result" class="result">
+                    <!-- Found seed phrases will be dynamically added here -->
+                </div>
+
+                <!-- Control Buttons -->
+                <div class="control-buttons">
+                    <button id="startButton" type="button">START</button>
+                    <button id="stopButton" type="button">STOP</button>
+                </div>
+
+                <!-- Found Seeds Section -->
+                <section>
+                    <h2>Found Wallets (<span id="walletCount">0</span>)</h2> <!-- Display Wallet Count -->
+                    <div id="validSeeds" class="valid-seeds">
+                        <div id="noWalletMessage" class="no-wallet-message">You haven't found any wallet yet.</div>
+                        <!-- Found seed phrases will be dynamically added here -->
+                    </div>
+                </section>
+
+                <!-- Clear Button -->
+                <div class="action-buttons">
+                    <button id="clearButton" type="button">Clear</button>
+                </div>
+            </div>
+
+            <!-- Dashboard Tab Content -->
+            <div id="tab-content-dashboard" class="tab-content">
+                <h2>Found Assets</h2>
+
+                <!-- Total Earnings Section -->
+                <div class="dashboard-total-earnings">
+                    <h3>Total Earnings</h3>
+                    <p id="totalEarnings">$0.00</p> <!-- This will be the only Total Earnings displayed -->
+                </div>
+
+                <!-- Responsive Dashboard Grid -->
+                <div class="dashboard-grid">
+                    <div class="dashboard-box">
+                        <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin Logo">
+                        <p class="crypto-name">Bitcoin</p>
+                        <p class="crypto-value" id="bitcoinValue">0.00 $ found</p>
+                        <p class="usd-balance" id="bitcoinUsdBalance">$0.00</p>
+                    </div>
+                    <div class="dashboard-box">
+                        <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="Ethereum Logo">
+                        <p class="crypto-name">Ethereum</p>
+                        <p class="crypto-value" id="ethereumValue">0.00 $ found</p>
+                        <p class="usd-balance" id="ethereumUsdBalance">$0.00</p>
+                    </div>
+                    <div class="dashboard-box">
+                        <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana Logo">
+                        <p class="crypto-name">Solana</p>
+                        <p class="crypto-value" id="solanaValue">0.00 $ found</p>
+                        <p class="usd-balance" id="solanaUsdBalance">$0.00</p>
+                    </div>
+                    <div class="dashboard-box">
+                        <img src="https://cryptologos.cc/logos/bnb-bnb-logo.png" alt="BNB Logo">
+                        <p class="crypto-name">BNB</p>
+                        <p class="crypto-value" id="bnbValue">0.00 $ found</p>
+                        <p class="usd-balance" id="bnbUsdBalance">$0.00</p>
+                    </div>
+                </div>
+
+                <!-- Withdraw Button -->
+                <button id="dashboardWithdrawButton" type="button" class="withdraw-button">Withdraw</button>
+            </div>
+
+            <!-- Profile Tab Content -->
+            <div id="tab-content-profile" class="tab-content">
+                <div class="profile-container">
+                    <h2>
+                        <i class="fa fa-user-circle" aria-hidden="true"></i>
+                        User Profile
+                    </h2>
+                    <div class="profile-info">
+                        <div class="profile-info-item">
+                            <label for="profileUsername">Username:</label>
+                            <span id="profileUsername">User123</span>
+                        </div>
+                        <div class="profile-info-item">
+                            <label for="profileLicenseKey">License Key:</label>
+                            <span id="profileLicenseKey">N/A</span>
+                        </div>
+                        <div class="profile-info-item">
+                            <label for="profileLicenseDuration">License Duration:</label>
+                            <span id="profileLicenseDuration">N/A</span>
+                        </div>
+                        <div class="profile-info-item">
+                            <label for="profileLicenseType">License Type:</label>
+                            <span id="profileLicenseType">N/A</span>
+                        </div>
+                        <div class="profile-info-item">
+                            <label for="profileActivationDate">Activation Date:</label>
+                            <span id="profileActivationDate">N/A</span>
+                        </div>
+                        <div class="profile-info-item">
+                            <label for="profileExpiryDate">Expiry Date:</label>
+                            <span id="profileExpiryDate">N/A</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Popup Notification -->
+    <div id="popup" class="popup"></div>
+
+    <!-- JavaScript -->
+    <script type="module" src="script.js"></script>
+</body>
+  </html>
